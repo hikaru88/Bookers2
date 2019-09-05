@@ -1,0 +1,72 @@
+<!-- 本の詳細ページ -->
+<main>
+
+  <div>
+    <% if flash[:notice] %>
+      <p><%= flash[:notice] %></p>
+    <% end %>
+  </div>
+
+<div class="content-box row">
+  <div class="sidebar-box col-md-4">
+    <div>
+      <h1>User info</h1>
+      <%= attachment_image_tag @users, :profile_image, format: 'jpeg', fallback: "no_image.jpg", size: "60x60" %>
+      <table class="table">
+        <tr>
+          <th>name</th>
+          <th><%= @users.name %></th>
+        </tr>
+        <tr>
+          <th>introduction</th>
+          <th><%= @users.introduction %></th>
+        </tr>
+      </table>
+      <div class="edit-button">
+        <%= link_to "", edit_user_path(@user), class: "glyphicon glyphicon-wrench color-black" %>
+      </div>
+    </div>
+
+    <div>
+      <h1>New book</h1>
+      <%= form_for (@book) do |f| %>
+      <p>Title</p>
+      <%= f.text_field :title, class: "textarea" %>
+
+      <p>Opinion</p>
+      <%= f.text_area :body, class: "textarea" %>
+
+      <%= f.submit 'Create Book', class: "btn btn-success btn-block" %>
+
+      <% end %>
+    </div>
+  </div>
+
+  <div class="book-box col-md-8 table-responsive">
+    <h1>Book detail</h1>
+    <table class="table">
+      <tr>
+        <th>
+          <%= attachment_image_tag @users, :profile_image, format: 'jpeg', fallback: "no_image.jpg", size: "60x60" %>
+        </th>
+        <th>
+          <%= @book.title %>
+        </th>
+        <th>
+          <%= @book.body %>
+        </th>
+        <% if @book.user == current_user %>
+        <th>
+          <%= link_to "edit", edit_book_path(@book) %>
+        </th>
+        <th>
+          <%= link_to "Destroy", book_path(@book.id), method: :delete, data: { confirm: "本当に削除しますか？", commit: "削除する", cancel: "やめる", title: "ご確認ください" } %>
+        </th>
+        <% end %>
+      </tr>
+    </table>
+      <%= link_to @users.name, user_path(@users) %>
+  </div>
+</div>
+
+</main>

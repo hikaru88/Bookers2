@@ -1,0 +1,123 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.clearfix::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.navbar {
+  background-color: #222;
+  border-radius: 0;
+}
+
+
+/* 共通header footer */
+/* header {
+  height: 55px;
+  width: auto;
+  background-color: #222;
+}
+.header-content {
+  width: 1024px;
+  margin: 0 auto;
+  position: relative;
+}
+.header-content > h1 {
+  font-size: 25px;
+  color: white;
+}
+.header-nav-list {
+  list-style: none;
+  float: left;
+  position: absolute;
+  top: 45%;
+  right: 5%;
+}
+.header-content > ul > li {
+  display: inline;
+  margin: 0 auto;
+  display: inline-block;
+  margin-right: 15px;
+  margin-left: 15px;
+}
+.header-nav {
+  text-decoration: none;
+  color: #9d9d9d;
+} */
+footer {
+  white-space: nowrap;
+  margin-top: 30px;
+  margin-right: 20%;
+  margin-left: 60%;
+}
+
+/* top */
+.top-content {
+  margin-top: 50px;
+}
+.top-content-box {
+  width: 500px;
+  margin: 0 auto;
+}
+.top-content-box > h1 {
+  font-size: 30px;
+}
+.top-content-box > .wel {
+  margin-bottom: 0px;
+}
+.top-content-box > .bo {
+  margin-top: 0px;
+}
+.top-content > .button {
+  width: 500px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* sign up */
+.signup-box {
+  margin-left: 120px;
+}
+
+/* log in */
+.login-box {
+  margin-left: 120px;
+}
+
+
+/* home */
+.content-box {
+  margin-left: 120px;
+}
+
+
+.color-black {
+  color: black;
+}
+.edit-button {
+  text-align: center;
+  line-height: 30px;
+  width: 290px;
+  height: 30px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: gray;
+  border-radius: 5px;
+}
+
+.textarea {
+  width: 280px;
+  resize: none;
+}
+
+.edit-box {
+  margin-left: 120px;
+}

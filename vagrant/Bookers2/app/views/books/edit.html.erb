@@ -1,0 +1,19 @@
+
+  <div class="edit-box">
+    <h1>Editing Book</h1>
+    <div>
+      <%= form_for (@book) do |f| %>
+        <p>Title</p>
+        <%= f.text_field :title, value: @book.title %>
+        <p>Opinion</p>
+        <%= f.text_area :body, value: @book.body %>
+        <%= f.submit "Update Book" %>
+      <% end %>
+      <div>
+        <%= link_to "Show", book_path(@book.id) %>
+      </div>
+      <div>
+        <%= link_to "Back", books_path %>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,35 @@
+<!-- userの編集画面 -->
+<div class="edit-box">
+  <%= form_with model: @user, local: true do |f| %>
+    <% if @user.errors.any? %>
+      <div class="alert alert-warning">
+        <p><%= @user.errors.count %>件のエラーが発生しました</p>
+        <ul>
+          <% @user.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+  <% end %>
+
+  <div>
+    <h1>User info</h1>
+    <%= form_for @user do |f| %>
+      <div>
+        <p>name</p>
+        <%= f.text_area :name %>
+      </div>
+      <div>
+        <p>introduction</p>
+        <%= f.text_area :introduction %>
+      </div>
+      <div>
+        <p>image</p>
+        <%= attachment_image_tag @user, :profile_image, :fill, 60, 60, fallback:"no_image.jpg" %>
+        <%= f.attachment_field :profile_image, placeholder: "プロフィール画像" %>
+      </div>
+      <%= f.submit "Update User" %>
+    <% end %>
+  </div>
+</div>
