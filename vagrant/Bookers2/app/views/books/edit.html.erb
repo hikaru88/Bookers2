@@ -1,5 +1,16 @@
 
   <div class="edit-box">
+    <% if @book.errors.any? %>
+      <div class="alert alert-warning">
+        <p><%= @book.errors.count %>件のerrorが発生しました</p>
+        <ul>
+          <% @book.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
     <h1>Editing Book</h1>
     <div>
       <%= form_for (@book) do |f| %>

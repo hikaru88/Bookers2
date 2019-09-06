@@ -1,16 +1,16 @@
 <!-- userの編集画面 -->
 <div class="edit-box">
   <%= form_with model: @user, local: true do |f| %>
-    <% if @user.errors.any? %>
-      <div class="alert alert-warning">
-        <p><%= @user.errors.count %>件のエラーが発生しました</p>
-        <ul>
-          <% @user.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-          <% end %>
-        </ul>
-      </div>
-    <% end %>
+  <% if @user.errors.any? %>
+    <div class="alert alert-warning">
+      <p><%= @user.errors.count %>件のerrorが発生しました</p>
+      <ul>
+        <% @user.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
   <% end %>
 
   <div>

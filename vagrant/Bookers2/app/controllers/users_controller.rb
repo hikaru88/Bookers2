@@ -1,11 +1,15 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!, except: [:top]
+  before_action :authenticate_user!, except: [:top, :about]
   before_action :correct_user, only: [:edit]
 
   def show
     @user = User.find(params[:id])
     @book = Book.new
     @books = Book.all
+    @users = User.all
+  end
+
+  def about
   end
 
   # def edit
@@ -42,6 +46,8 @@ class UsersController < ApplicationController
   #   end
   # end
 
+  #redirect_to user_path(current_user)
+
   def update
     @user = current_user
     if @user.update(user_params)
@@ -60,14 +66,16 @@ class UsersController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:name, :introduction, :profile_image)
+    params.require(:user).permit(:name, :introduction, :profile_image ,:user_id)
   end
 
   def correct_user
-    user = User.find(params[:id])
-    if current_user != user
-      flash[:notice] = "権限がありません。"
-      redirect_to user_home_path
+    # book = Book.find(params[:id])
+    # if current_user.id != book.user_id
+    @user = User.find(params[:id])
+    if current_user.id != @user.id
+      flash[:notice] = "権限がありません"
+      redirect_to user_path(current_user)
     end
   end
 

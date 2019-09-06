@@ -1,0 +1,52 @@
+  <div>
+    <% if flash[:notice] %>
+      <p><%= flash[:notice] %></p>
+    <% end %>
+  </div>
+
+  <% if book.errors.any? %>
+    <div class="alert alert-warning">
+      <p><%= book.errors.count %>件のerrorが発生しました</p>
+      <ul>
+        <% book.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="sidebar-box col-md-4">
+    <div class="table-responsive">
+      <h1>User info</h1>
+      <div>
+        <%= attachment_image_tag user, :profile_image, format: 'jpeg', fallback: "no_image.jpg", size: "60x60" %>
+      </div>
+      <table class="table">
+        <tr>
+          <th>name</th>
+          <th><%= user.name %></th>
+        </tr>
+        <tr>
+          <th>introduction</th>
+          <th><%= user.introduction %></th>
+        </tr>
+      </table>
+      <div class="edit-button">
+        <%= link_to "", edit_user_path(user), class: "glyphicon glyphicon-wrench color-black" %>
+      </div>
+    </div>
+
+    <div>
+      <h1>New book</h1>
+      <%= form_for (book) do |f| %>
+      <p>Title</p>
+      <%= f.text_field :title, class: "textarea" %>
+
+      <p>Opinion</p>
+      <%= f.text_area :body, class: "textarea" %>
+
+      <%= f.submit 'Create Book', class: "btn btn-success btn-block" %>
+
+      <% end %>
+    </div>
+  </div>

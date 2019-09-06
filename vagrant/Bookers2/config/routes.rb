@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   root to: 'users#top'
+  get '/home/about', to: 'users#about', as: 'about'
   get '/users/:id/home', to: 'books#home', as: 'user_home'
 
   devise_for :users
